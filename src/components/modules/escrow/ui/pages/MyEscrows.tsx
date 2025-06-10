@@ -15,12 +15,13 @@ import MyEscrowsCards from "@/components/modules/escrow/ui/cards/MyEscrowsCards"
 import MyEscrowsFilter from "@/components/modules/escrow/ui/filters/MyEscrowsFilter";
 import { useGlobalUIBoundedStore } from "@/core/store/ui";
 import Joyride from "react-joyride";
-import { steps } from "@/constants/steps/steps";
+import { useSteps } from "@/constants/steps/steps";
 import { useState } from "react";
 import { CircleHelp } from "lucide-react";
 import { MoonpayWidget } from "@/components/modules/payment/widgets/moonpay.widget";
 import { useGlobalBoundedStore } from "@/core/store/data";
 import TooltipInfo from "@/components/utils/ui/Tooltip";
+import { useTranslation } from "react-i18next";
 
 const MyEscrows = () => {
   const isLoading = useGlobalUIBoundedStore((state) => state.isLoading);
@@ -30,10 +31,13 @@ const MyEscrows = () => {
   const activeMode = useEscrowUIBoundedStore((state) => state.activeMode);
   const theme = useGlobalUIBoundedStore((state) => state.theme);
 
+  const { t } = useTranslation();
   const [run, setRun] = useState(false);
   const isMoonpayWidgetOpen = useEscrowUIBoundedStore(
     (state) => state.isMoonpayWidgetOpen,
   );
+
+  const steps = useSteps();
 
   return (
     <>
@@ -49,6 +53,13 @@ const MyEscrows = () => {
           <Joyride
             run={run}
             steps={steps}
+            locale={{
+              back: t("onboarding.buttons.back"),
+              next: t("onboarding.buttons.next"),
+              skip: t("onboarding.buttons.skip"),
+              close: t("onboarding.buttons.close"),
+              last: t("onboarding.buttons.last"),
+            }}
             continuous
             showSkipButton
             hideCloseButton
