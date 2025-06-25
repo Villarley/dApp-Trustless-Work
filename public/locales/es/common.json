@@ -585,6 +585,17 @@
         "showMore": "Mostrar Más Métricas",
         "showLess": "Mostrar Menos Métricas"
       }
+    },
+    "milestones": {
+      "title": "Resumen de Hitos",
+      "total": "Hitos Totales",
+      "totalDescription": "Total de hitos en todos los escrows",
+      "pending": "Pendiente de Aprobación",
+      "pendingDescription": "Hitos completados esperando aprobación",
+      "approvedNotReleased": "Aprobados No Liberados",
+      "approvedNotReleasedDescription": "Hitos aprobados en escrows no liberados",
+      "disputed": "Hitos en Disputa",
+      "disputedDescription": "Hitos en escrows disputados"
     }
   }
 }

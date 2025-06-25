@@ -585,6 +585,17 @@
         "showMore": "Show More Metrics",
         "showLess": "Show Less Metrics"
       }
+    },
+    "milestones": {
+      "title": "Milestone Overview",
+      "total": "Total Milestones",
+      "totalDescription": "Total milestones across all escrows",
+      "pending": "Pending Approval",
+      "pendingDescription": "Completed milestones awaiting approval",
+      "approvedNotReleased": "Approved Not Released",
+      "approvedNotReleasedDescription": "Approved milestones in unreleased escrows",
+      "disputed": "Disputed Milestones",
+      "disputedDescription": "Milestones in disputed escrows"
     }
   }
 }

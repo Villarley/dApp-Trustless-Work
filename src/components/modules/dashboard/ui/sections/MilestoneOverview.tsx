@@ -1,3 +1,5 @@
+"use client";
+
 import { CheckCircle, Clock, AlertTriangle, FileCheck } from "lucide-react";
 import { MetricCard } from "../cards/MetricCard";
 import { MilestoneStatusChart } from "../charts/MilestoneStatusChart";
@@ -6,6 +8,7 @@ import { useMilestoneDashboardData } from "../../hooks/milestone-dashboard-data.
 import { SkeletonMilestoneStatusChart } from "../utils/SkeletonMilestoneOverview";
 import { SkeletonMilestoneApprovalTrendChart } from "../utils/SkeletonMilestoneApprovalChart";
 import { Escrow } from "@/@types/escrow.entity";
+import { useTranslation } from "react-i18next";
 
 interface MilestonesOverviewProps {
   address: string;
@@ -18,39 +21,40 @@ export const MilestonesOverview = ({
   type = "approver",
   escrows = [],
 }: MilestonesOverviewProps) => {
+  const { t } = useTranslation();
   const data = useMilestoneDashboardData({ address, type, escrows });
   const hasData = data !== null;
 
   return (
     <div className="flex flex-col w-full h-full gap-4">
-      <h1 className="text-2xl font-bold">Milestone Overview</h1>
+      <h1 className="text-2xl font-bold">{t("dashboard.milestones.title")}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricCard
-          title="Total Milestones"
+          title={t("dashboard.milestones.total")}
           value={hasData ? data.totalMilestones : 0}
           icon={<FileCheck />}
-          subValue="Total milestones across all escrows"
+          subValue={t("dashboard.milestones.totalDescription")}
           isLoading={!hasData}
         />
         <MetricCard
-          title="Pending Approval"
+          title={t("dashboard.milestones.pending")}
           value={hasData ? data.pendingApproval : 0}
           icon={<Clock />}
-          subValue="Completed milestones awaiting approval"
+          subValue={t("dashboard.milestones.pendingDescription")}
           isLoading={!hasData}
         />
         <MetricCard
-          title="Approved Not Released"
+          title={t("dashboard.milestones.approvedNotReleased")}
           value={hasData ? data.approvedNotReleased : 0}
           icon={<CheckCircle />}
-          subValue="Approved milestones in unreleased escrows"
+          subValue={t("dashboard.milestones.approvedNotReleasedDescription")}
           isLoading={!hasData}
         />
         <MetricCard
-          title="Disputed Milestones"
+          title={t("dashboard.milestones.disputed")}
           value={hasData ? data.disputed : 0}
           icon={<AlertTriangle />}
-          subValue="Milestones in disputed escrows"
+          subValue={t("dashboard.milestones.disputedDescription")}
           isLoading={!hasData}
         />
       </div>
